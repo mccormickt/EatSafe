@@ -17,5 +17,35 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"/>
+            android:text="EatSafe"
+            android:layout_centerHorizontal="true"
+            android:textSize="36sp" android:fontFamily="sans-serif-smallcaps"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Email"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_above="@+id/editText2" android:layout_alignLeft="@+id/editText2"
+            android:layout_alignStart="@+id/editText2" android:layout_marginBottom="32dp"/>
+    <Button
+            android:text="Sign In"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp" android:id="@+id/button"
+            android:layout_below="@+id/editText2" android:layout_centerHorizontal="true"/>
+    <Button
+            android:text="Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_below="@+id/button"
+            android:layout_alignLeft="@+id/button" android:layout_alignStart="@+id/button"
+            android:layout_marginTop="29dp" android:id="@+id/button2"/>
 </RelativeLayout>
