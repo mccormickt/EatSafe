@@ -99,18 +99,16 @@ public class LoginActivity
         });
 
 
-//        Button registerButton = (Button) findViewById(R.id.button2);
-//        registerButton.setOnClickListener(new View.OnClickListener() {
-//            /**
-//             * The onClick method
-//             * @param view takes in the view
-//             */
-//            @Override
-//            public void onClick(final View view) {
-//                startActivity(new Intent(LoginActivity.this,
-//                        RegistrationActivity1.class));
-//            }
-//        });
+        Button registerButton = (Button) findViewById(R.id.register);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                Toast toast = Toast.makeText(LoginActivity.this,
+                        "Coming Soon!",
+                        Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
 
 //        Button forgotPasswordButton =
 //                (Button) findViewById(R.id.forgot_password);
