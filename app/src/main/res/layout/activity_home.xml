@@ -13,7 +13,7 @@
          android:fitsSystemWindows. -->
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 android:fitsSystemWindows="true">
+                 >
 
         <LinearLayout android:id="@+id/fullscreen_content_controls"
                       style="?metaButtonBarStyle"
@@ -24,16 +24,10 @@
                       android:orientation="horizontal"
                       tools:ignore="UselessParent">
 
-            <Button android:id="@+id/dummy_button"
-                    style="?metaButtonBarButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/dummy_button"/>
 
         </LinearLayout>
     </FrameLayout>
 
-    <include layout="@layout/content_home"/>
+    <include layout="@layout/content_home" />
 
 </FrameLayout>

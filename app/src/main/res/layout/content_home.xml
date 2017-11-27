@@ -26,11 +26,29 @@
             app:srcCompat="@drawable/eatsafe"
             android:id="@+id/logo"
             android:layout_below="@+id/title" android:layout_centerHorizontal="true"
-            android:layout_height="250px"/>
-    <TextView
-            android:text="Coming Soon!"
+            android:layout_height="250px" android:background="?android:attr/panelBackground"/>
+    <ImageButton
+            android:layout_height="100dp" app:srcCompat="@drawable/camera"
+            android:id="@+id/camera"
+            android:visibility="visible" android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/friends"
+            android:layout_alignStart="@+id/friends" android:layout_marginBottom="12dp"
+            android:layout_alignRight="@+id/allergies" android:layout_alignEnd="@+id/allergies"
+            android:layout_width="100dp" style="@android:style/Widget.ImageButton"
+            android:background="?android:attr/panelBackground"/>
+    <Button
+            android:text="My Friends"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" android:layout_marginBottom="138dp" android:id="@+id/textView"
-            android:textSize="36sp" android:fontFamily="serif"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" android:id="@+id/friends"
+            android:layout_below="@+id/allergies" android:layout_centerHorizontal="true"/>
+    <Button
+            android:text="My Allergies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/allergies"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+
+
 </RelativeLayout>
