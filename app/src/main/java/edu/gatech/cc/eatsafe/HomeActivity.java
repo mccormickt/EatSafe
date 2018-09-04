@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -172,8 +174,18 @@ public class HomeActivity extends AppCompatActivity {
                     public void onSuccess(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
                         handleBarcode(firebaseVisionBarcodes);
                     }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                   @Override
+                   public void onFailure(@NonNull Exception e) {
+                       Toast toast = Toast.makeText(HomeActivity.this,
+                               "Failed to Read Barcode!",
+                               Toast.LENGTH_LONG);
+                       toast.show();
+                   }
                 });
     }
+
 
     private void handleBarcode(List<FirebaseVisionBarcode>  barcodes) {
         for (FirebaseVisionBarcode barcode : barcodes) {
