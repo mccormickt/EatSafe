@@ -1,13 +1,27 @@
 package edu.gatech.cc.eatsafe;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -110,7 +124,7 @@ public class HomeActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        comingSoon();
+                        dispatchTakePictureIntent();
                     }
                 }
         );
@@ -132,7 +146,55 @@ public class HomeActivity extends AppCompatActivity {
         );
     }
 
-    public void comingSoon() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            scanBarcode(imageBitmap);
+        }
+    }
+
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    private void scanBarcode(Bitmap bitmap) {
+        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);
+        FirebaseVisionBarcodeDetector scanner = FirebaseVision.getInstance().getVisionBarcodeDetector();
+        Task<List<FirebaseVisionBarcode>> result = scanner.detectInImage(image)
+                .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionBarcode>>() {
+                    @Override
+                    public void onSuccess(List<FirebaseVisionBarcode> firebaseVisionBarcodes) {
+                        handleBarcode(firebaseVisionBarcodes);
+                    }
+                });
+    }
+
+    private void handleBarcode(List<FirebaseVisionBarcode>  barcodes) {
+        for (FirebaseVisionBarcode barcode : barcodes) {
+            //Ensure this is a product barcode
+            int valueType = barcode.getValueType();
+            if (valueType != FirebaseVisionBarcode.TYPE_PRODUCT) {
+                Toast toast = Toast.makeText(HomeActivity.this,
+                        "Incorrect Barcode Type!: " + valueType,
+                        Toast.LENGTH_LONG);
+                toast.show();
+            } else {
+                //Show barcode scan works by printing to screen
+                Toast toast = Toast.makeText(HomeActivity.this,
+                        "Barcode Scanned!: " + barcode.getRawValue(),
+                        Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
+    }
+
+    private void comingSoon() {
         Toast toast = Toast.makeText(HomeActivity.this,
                 "Coming Soon!",
                 Toast.LENGTH_SHORT);
