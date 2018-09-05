@@ -116,8 +116,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "edu.gatech.cc.eatsafe",
+                Uri photoURI = FileProvider.getUriForFile(this, "edu.gatech.cc.eatsafe",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
