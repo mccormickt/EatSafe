@@ -25,6 +25,8 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -168,6 +170,17 @@ public class HomeActivity extends AppCompatActivity {
     private void scanBarcode(Bitmap bitmap) {
         FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);
         FirebaseVisionBarcodeDetector scanner = FirebaseVision.getInstance().getVisionBarcodeDetector();
+        FirebaseVisionBarcodeDetectorOptions options =
+                new FirebaseVisionBarcodeDetectorOptions.Builder()
+                        .setBarcodeFormats(
+                                FirebaseVisionBarcode.FORMAT_UPC_A,
+                                FirebaseVisionBarcode.FORMAT_UPC_E,
+                                FirebaseVisionBarcode.FORMAT_EAN_13,
+                                FirebaseVisionBarcode.FORMAT_EAN_8,
+                                FirebaseVisionBarcode.FORMAT_CODE_128,
+                                FirebaseVisionBarcode.FORMAT_ITF_14,
+                                FirebaseVisionBarcode.FORMAT_CODE_39)
+                        .build();
         Task<List<FirebaseVisionBarcode>> result = scanner.detectInImage(image)
                 .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionBarcode>>() {
                     @Override
