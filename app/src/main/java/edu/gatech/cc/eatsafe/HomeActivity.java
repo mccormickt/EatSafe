@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 
 import java.util.List;
@@ -178,7 +179,7 @@ public class HomeActivity extends AppCompatActivity {
                                 FirebaseVisionBarcode.FORMAT_EAN_13,
                                 FirebaseVisionBarcode.FORMAT_EAN_8,
                                 FirebaseVisionBarcode.FORMAT_CODE_128,
-                                FirebaseVisionBarcode.FORMAT_ITF_14,
+                                FirebaseVisionBarcode.FORMAT_ITF,
                                 FirebaseVisionBarcode.FORMAT_CODE_39)
                         .build();
         Task<List<FirebaseVisionBarcode>> result = scanner.detectInImage(image)
