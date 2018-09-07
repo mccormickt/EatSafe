@@ -5,16 +5,32 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2a08429d-40b7-4684-9919-61dc10520ded" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/camera.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/camera_alt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_camera.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -32,102 +48,126 @@
     <session id="1280267917">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.41" value="1" />
+          <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.73" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3344" />
-          <entry key="xml" value="172" />
+          <entry key="gradle" value="310" />
+          <entry key="java" value="8136" />
+          <entry key="kt" value="17" />
+          <entry key="pro" value="3" />
+          <entry key="txt" value="1" />
+          <entry key="xml" value="1860" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3344" />
-          <entry key="XML" value="172" />
+          <entry key="Groovy" value="310" />
+          <entry key="JAVA" value="8136" />
+          <entry key="Kotlin" value="17" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="ProGuard File" value="3" />
+          <entry key="XML" value="1860" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="xml" value="2" />
+          <entry key="class" value="1" />
+          <entry key="java" value="9" />
+          <entry key="kt" value="1" />
+          <entry key="kts" value="1" />
+          <entry key="png" value="7" />
+          <entry key="pro" value="1" />
+          <entry key="xml" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="XML" value="2" />
+          <entry key="CLASS" value="1" />
+          <entry key="Image" value="7" />
+          <entry key="JAVA" value="9" />
+          <entry key="Kotlin" value="2" />
+          <entry key="ProGuard File" value="1" />
+          <entry key="XML" value="19" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_home.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/capture_camera.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
+              <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102">
+              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
               <folding>
-                <element signature="e#1231#2007#0" expanded="true" />
-                <element signature="e#2006#2007#0" expanded="true" />
-                <element signature="e#2089#2410#0" expanded="true" />
-                <element signature="e#2409#2410#0" expanded="true" />
-                <element signature="e#3971#4160#0" expanded="true" />
-                <element signature="e#4159#4160#0" expanded="true" />
-                <element signature="e#4243#4432#0" expanded="true" />
-                <element signature="e#4431#4432#0" expanded="true" />
-                <element signature="e#4517#4706#0" expanded="true" />
-                <element signature="e#4705#4706#0" expanded="true" />
-                <element signature="e#6262#6523#0" expanded="true" />
-                <element signature="e#6522#6523#0" expanded="true" />
-                <element signature="e#6787#7177#0" expanded="true" />
-                <element signature="e#7176#7177#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-              <folding>
-                <element signature="e#6599#6628#0" expanded="true" />
-                <element signature="e#8104#8146#0" expanded="true" />
-                <element signature="e#8342#8382#0" expanded="true" />
-                <element signature="e#8523#8562#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-              <folding>
-                <element signature="e#585#603#0" expanded="true" />
-                <element signature="e#780#798#0" expanded="true" />
-                <element signature="e#1207#1236#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_camera.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Script" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -1686,10 +1726,10 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="9214481664778" />
+        <entry key="$PROJECT_DIR$" value="9216089960650" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/app/build.gradle" value="903882954" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="2262519011" />
+        <entry key="$PROJECT_DIR$/app/build.gradle" value="3675161109" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3660145959" />
         <entry key="$PROJECT_DIR$/gradle.properties" value="3241497683" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2083459160" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="3739342718" />
@@ -1708,7 +1748,7 @@
                         <option name="entries">
                           <list>
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.1.4/55bc7ad7b19dbd81a1841366c268f2614b6cd724/gradle-3.1.4-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.0.1/15d345a81ab5756fc59b81ba99435d20568ee8e6/google-services-4.0.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.1.0/984511654bec64db6949171923bcb21159b9584d/google-services-4.1.0-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/3.1.4/6a543ae131c6c5e83d5549b56e92ff286f40cc33/gradle-core-3.1.4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/3.1.4/111617726612cdac11b4af9bab6f6de3478490e7/builder-3.1.4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint-gradle-api/26.1.4/bc29109013b026daec0686aac9d205505bddd096/lint-gradle-api-26.1.4-sources.jar" />
@@ -1778,7 +1818,7 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/txw2/2.2.11/7745afc4dcc863b724f4a21fb3fc517cd5aaf891/txw2-2.2.11-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.istack/istack-commons-runtime/2.21/5d42dda44aa68ff87756e93ae0042cd66d2daa78/istack-commons-runtime-2.21-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.1.4/8f9a726f69c0c8fa3f447566717a21e6b394ed9/gradle-3.1.4.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.0.1/a9fdd01c6f67fa7d12cc156a7a20a5086fbd1287/google-services-4.0.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.1.0/33036e6eac9c174a7aad841e93df3975852a5aef/google-services-4.1.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/3.1.4/4c846d065331c2a11ed605619613833a842a7b8d/gradle-core-3.1.4.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/bundletool/0.1.0-alpha01/f7c303e37818223bd98566fcbea29aa0964c4d06/bundletool-0.1.0-alpha01.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/3.1.4/afbcd4b7002c61fe898b1b4c50ed9e62386125d8/builder-3.1.4.jar" />
@@ -1862,7 +1902,7 @@
                         <option name="entries">
                           <list>
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.1.4/55bc7ad7b19dbd81a1841366c268f2614b6cd724/gradle-3.1.4-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.0.1/15d345a81ab5756fc59b81ba99435d20568ee8e6/google-services-4.0.1-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.1.0/984511654bec64db6949171923bcb21159b9584d/google-services-4.1.0-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/3.1.4/6a543ae131c6c5e83d5549b56e92ff286f40cc33/gradle-core-3.1.4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/3.1.4/111617726612cdac11b4af9bab6f6de3478490e7/builder-3.1.4-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.lint/lint-gradle-api/26.1.4/bc29109013b026daec0686aac9d205505bddd096/lint-gradle-api-26.1.4-sources.jar" />
@@ -1932,7 +1972,7 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/txw2/2.2.11/7745afc4dcc863b724f4a21fb3fc517cd5aaf891/txw2-2.2.11-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.istack/istack-commons-runtime/2.21/5d42dda44aa68ff87756e93ae0042cd66d2daa78/istack-commons-runtime-2.21-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.1.4/8f9a726f69c0c8fa3f447566717a21e6b394ed9/gradle-3.1.4.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.0.1/a9fdd01c6f67fa7d12cc156a7a20a5086fbd1287/google-services-4.0.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.gms/google-services/4.1.0/33036e6eac9c174a7aad841e93df3975852a5aef/google-services-4.1.0.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle-core/3.1.4/4c846d065331c2a11ed605619613833a842a7b8d/gradle-core-3.1.4.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/bundletool/0.1.0-alpha01/f7c303e37818223bd98566fcbea29aa0964c4d06/bundletool-0.1.0-alpha01.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/builder/3.1.4/afbcd4b7002c61fe898b1b4c50ed9e62386125d8/builder-3.1.4.jar" />
@@ -2175,10 +2215,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$APPLICATION_CONFIG_DIR$/idea.properties" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/proguard-rules.pro" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_home.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/content_camera.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml" />
       </list>
     </option>
   </component>
@@ -2194,15 +2241,16 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -2220,30 +2268,6 @@
               <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="androidTest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="androidTest" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="androidTest" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="eatsafe" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
@@ -2302,7 +2326,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="values" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EatSafe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EatSafe" type="b2602c69:ProjectViewProjectNode" />
@@ -2332,19 +2374,35 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="{&#9;null&#9;null" />
+    <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536031631963" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536297146015" />
     <property name="device.picker.selection" value="4835343739383098" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tommy McCormick\git\EatSafe\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="edu.gatech.cc.eatsafe" />
+    </key>
+    <key name="android.template.parentActivityClass">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Tommy McCormick\git\EatSafe\app\src\main\res\drawable" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2358,7 +2416,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="app" />
       <option name="DEPLOY" value="true" />
@@ -2397,6 +2455,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EatSafe [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -2420,6 +2496,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Gradle.EatSafe [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.EatSafe [clean]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="externalProjectsViewState">
@@ -2443,11 +2528,12 @@
       <workItem from="1535732463263" duration="60000" />
       <workItem from="1535734158501" duration="118000" />
       <workItem from="1535754119309" duration="11307000" />
+      <workItem from="1536288900470" duration="8355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15196000" />
+    <option name="totallyTimeSpent" value="27449000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2460,8 +2546,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49924812" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49924812" visible="true" weight="0.1945629" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.50075185" side_tool="true" weight="0.25" />
@@ -2470,35 +2557,38 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Captures" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.329718" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49573562" weight="0.3286334" />
-      <window_info anchor="bottom" id="Android Monitor" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27874187" />
-      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="12" />
-      <window_info anchor="bottom" id="Android Profiler" order="13" weight="0.329718" />
-      <window_info anchor="bottom" id="Logcat" order="14" />
-      <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Gradle" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
-      <window_info anchor="right" id="Android Model" order="10" side_tool="true" />
-      <window_info anchor="right" id="sbt" order="11" />
-      <window_info anchor="right" id="Device File Explorer" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3275488" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49946696" weight="0.3362256" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49946696" weight="0.23535791" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Build" order="8" sideWeight="0.4968017" visible="true" weight="0.15726681" />
+      <window_info anchor="bottom" id="Android Monitor" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50319827" side_tool="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.329718" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.30043384" />
+      <window_info anchor="bottom" id="sbt-shell-toolwindow" order="13" />
+      <window_info anchor="bottom" id="Android Profiler" order="14" weight="0.329718" />
+      <window_info anchor="bottom" id="Logcat" order="15" weight="0.329718" />
+      <window_info anchor="bottom" id="Database Changes" order="16" show_stripe_button="false" />
+      <window_info anchor="right" id="Preview" order="0" weight="0.32995737" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="10" />
+      <window_info anchor="right" id="Android Model" order="11" side_tool="true" />
+      <window_info anchor="right" id="sbt" order="12" />
+      <window_info anchor="right" id="Device File Explorer" order="13" side_tool="true" />
+      <window_info anchor="right" id="Kotlin Bytecode" order="14" weight="0.32995737" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2509,35 +2599,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/idea.properties" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EatSafe.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-          <folding>
-            <element signature="e#6599#6628#0" expanded="true" />
-            <element signature="e#8104#8146#0" expanded="true" />
-            <element signature="e#8342#8382#0" expanded="true" />
-            <element signature="e#8523#8562#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -2546,39 +2609,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/file_paths.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+        <state relative-caret-position="51">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.kts" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.kt" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/android/lib/layoutlib/data/res/drawable-ldpi/ic_dialog_email.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/activity_camera_drawer.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="234" selection-start-line="234" selection-end-line="234" />
           <folding>
-            <element signature="e#585#603#0" expanded="true" />
-            <element signature="e#780#798#0" expanded="true" />
-            <element signature="e#1207#1236#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/camera_alt.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_login.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/camera.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/HomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="157" column="4" selection-start-line="157" selection-start-column="4" selection-end-line="157" selection-end-column="4" />
+        <state relative-caret-position="442">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
-            <element signature="e#1231#2007#0" expanded="true" />
-            <element signature="e#2006#2007#0" expanded="true" />
-            <element signature="e#2089#2410#0" expanded="true" />
-            <element signature="e#2409#2410#0" expanded="true" />
-            <element signature="e#3971#4160#0" expanded="true" />
-            <element signature="e#4159#4160#0" expanded="true" />
-            <element signature="e#4243#4432#0" expanded="true" />
-            <element signature="e#4431#4432#0" expanded="true" />
-            <element signature="e#4517#4706#0" expanded="true" />
-            <element signature="e#4705#4706#0" expanded="true" />
-            <element signature="e#6262#6523#0" expanded="true" />
-            <element signature="e#6522#6523#0" expanded="true" />
-            <element signature="e#6787#7177#0" expanded="true" />
-            <element signature="e#7176#7177#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/gatech/cc/eatsafe/CameraActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_home.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/camerakit-0.13.1.aar/8b4291588838caa8c3cf3cfc9f866ef9/jars/classes.jar!/com/wonderkiln/camerakit/CameraView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/capture_camera.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_camera.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_camera.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
         </state>
       </provider>
     </entry>
