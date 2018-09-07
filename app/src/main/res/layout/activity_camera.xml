@@ -15,7 +15,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_camera"/>
+    <include layout="@layout/content_camera" android:id="@+id/include"/>
     <com.wonderkiln.camerakit.CameraView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,10 +23,15 @@
     />
 
     <ImageButton
+            android:layout_height="100dp" app:srcCompat="@drawable/capture_camera"
             android:id="@+id/camera_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:icon="@drawable/camera"/>
+            android:visibility="visible" android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/friends"
+            android:layout_alignStart="@+id/friends" android:layout_marginBottom="12dp"
+            android:layout_alignRight="@+id/allergies" android:layout_alignEnd="@+id/allergies"
+            android:layout_width="100dp" style="@android:style/Widget.ImageButton"
+            android:background="?android:attr/panelBackground" app:layout_anchorGravity="bottom|center"
+            app:layout_anchor="@+id/include"/>
 
 </android.support.design.widget.CoordinatorLayout>

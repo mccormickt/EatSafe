@@ -9,4 +9,5 @@
         tools:showIn="@layout/activity_camera"
         tools:context=".CameraActivity">
 
+
 </android.support.constraint.ConstraintLayout>
