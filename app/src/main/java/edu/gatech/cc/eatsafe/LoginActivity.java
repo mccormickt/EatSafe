@@ -1,15 +1,17 @@
 package edu.gatech.cc.eatsafe;
 
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,6 +71,7 @@ public class LoginActivity
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(
                 new TextView.OnEditorActionListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public boolean onEditorAction(
                             final TextView textView,
@@ -83,6 +87,7 @@ public class LoginActivity
         final Button mEmailSignInButton =
                 (Button) findViewById(R.id.sign_in);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(final View view) {
                 attemptLogin();
@@ -184,11 +189,25 @@ public class LoginActivity
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void attemptLogin() {
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
-
+        //IMPORTANT MESSAGE
+        //IMPORTANT
+        //THIS CODE IS ONLY USED TO TEST API USAGE
+        /*GetNutrition tst = new GetNutrition();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        try {
+            String outpt = tst.getFoodByFoodGroup(0100);
+            Log.d("test", outpt);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //END API TEST
+        */
         // Store values at the time of the login attempt.
         Editable pHolder = mEmailView.getText();
         String email = pHolder.toString();
