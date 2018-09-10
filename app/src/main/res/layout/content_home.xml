@@ -17,7 +17,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EatSafe"
+            android:text="@string/eatsafe"
             android:layout_centerHorizontal="true"
             android:id="@+id/title"
             android:textSize="36sp" android:fontFamily="sans-serif-smallcaps"/>
@@ -26,7 +26,8 @@
             app:srcCompat="@drawable/eatsafe"
             android:id="@+id/logo"
             android:layout_below="@+id/title" android:layout_centerHorizontal="true"
-            android:layout_height="250px" android:background="?android:attr/panelBackground"/>
+            android:layout_height="250px" android:background="?android:attr/panelBackground"
+            android:contentDescription="TODO"/>
     <ImageButton
             android:layout_height="100dp" app:srcCompat="@drawable/camera"
             android:id="@+id/camera"

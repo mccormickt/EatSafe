@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CameraActivity">
+
+    <android.support.design.widget.AppBarLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_camera" android:id="@+id/include"/>
+    <com.wonderkiln.camerakit.CameraView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/camView"
+    />
+
+    <ImageButton
+            android:layout_height="100dp" app:srcCompat="@drawable/capture_camera"
+            android:id="@+id/camera_button"
+            android:visibility="visible" android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentBottom="true" android:layout_alignLeft="@+id/friends"
+            android:layout_alignStart="@+id/friends" android:layout_marginBottom="12dp"
+            android:layout_alignRight="@+id/allergies" android:layout_alignEnd="@+id/allergies"
+            android:layout_width="100dp" style="@android:style/Widget.ImageButton"
+            android:background="?android:attr/panelBackground" app:layout_anchorGravity="bottom|center"
+            app:layout_anchor="@+id/include"/>
+
+</android.support.design.widget.CoordinatorLayout>
