@@ -1,20 +1,11 @@
 package edu.gatech.cc.eatsafe;
 
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.content.Loader;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,12 +16,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,10 +31,8 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class LoginActivity
-        extends AppCompatActivity
-        implements LoaderCallbacks<Cursor> {
+        extends AppCompatActivity {
 
     /**
      * The constant VALID_EMAIL_ADDRESS_REGEX.
@@ -168,12 +158,8 @@ public class LoginActivity
         if (!mayRequestContacts()) {
             return;
         }
-
-        //noinspection ChainedMethodCall Isn't chained
-        getLoaderManager().initLoader(0, null, this);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     private boolean mayRequestContacts() {
         if (checkSelfPermission(READ_CONTACTS)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -185,7 +171,6 @@ public class LoginActivity
                     Snackbar.LENGTH_INDEFINITE);
             pHolder.setAction(android.R.string.ok, new View.OnClickListener() {
                 @Override
-                @TargetApi(Build.VERSION_CODES.M)
                 public void onClick(final View v) {
                     requestPermissions(
                             new String[]{READ_CONTACTS},
@@ -276,7 +261,6 @@ public class LoginActivity
             }
 
 
-            //noinspection ChainedMethodCall Needed for onclick
 //            mAuth.signInWithEmailAndPassword(email, password)
 //                    .addOnCompleteListener(this,
 //                            new OnCompleteListener<AuthResult>() {
@@ -318,35 +302,34 @@ public class LoginActivity
     /**
      * Shows the progress UI and hides the login form.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress() {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-
-        //noinspection ChainedMethodCall Needs chain
-        int shortAnimTime = getResources().
-                getInteger(android.R.integer.config_shortAnimTime);
-
-        mLoginFormView.setVisibility(View.GONE);
-        //noinspection ChainedMethodCall Needs chaining on the animate statement
-        mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                0).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(final Animator animation) {
-                mLoginFormView.setVisibility(View.GONE);
-            }
-        });
-
-        mProgressView.setVisibility(View.VISIBLE);
-        //noinspection ChainedMethodCall Needs chaining on the animate statement
-        mProgressView.animate().setDuration(shortAnimTime).alpha(
-                1).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                mProgressView.setVisibility(View.VISIBLE);
-            }
-        });
+//    private void showProgress() {
+//        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
+//        // for very easy animations. If available, use these APIs to fade-in
+//        // the progress spinner.
+//
+//        //noinspection ChainedMethodCall Needs chain
+//        int shortAnimTime = getResources().
+//                getInteger(android.R.integer.config_shortAnimTime);
+//
+//        mLoginFormView.setVisibility(View.GONE);
+//        //noinspection ChainedMethodCall Needs chaining on the animate statement
+//        mLoginFormView.animate().setDuration(shortAnimTime).alpha(
+//                0).setListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(final Animator animation) {
+//                mLoginFormView.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        mProgressView.setVisibility(View.VISIBLE);
+//        //noinspection ChainedMethodCall Needs chaining on the animate statement
+//        mProgressView.animate().setDuration(shortAnimTime).alpha(
+//                1).setListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                mProgressView.setVisibility(View.VISIBLE);
+//            }
+//        });
 
 //        Button cancelButton = (Button) findViewById(R.id.cancel_button);
 //        cancelButton.setOnClickListener(new OnClickListener() {
@@ -356,95 +339,11 @@ public class LoginActivity
 //            }
 //        });
 
-    }
+//    }
 
-    private void cancelLogin() {
-        startActivity(new Intent(LoginActivity.this, LoginActivity.class));
-    }
-
-
-    /**
-     * The onCreateLoader to get the profile of the user
-     * @param i an integer i
-     * @param bundle the final Bundle
-     * @return the Loader coming from the Cursor
-     */
-    @Override
-    @TargetApi(Build.VERSION_CODES.M)
-    public Loader<Cursor> onCreateLoader(final int i, final Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY),
-                ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE
-                        + " = ?",
-                new String[]{ContactsContract.CommonDataKinds.Email
-                        .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    /**
-     * The onLoadFinished loads the data after the user logs in
-     * @param cursorLoader loads all the data
-     * @param cursor the cursor to load the data
-     */
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    /**
-     * The onLoaderReset method
-     * @param cursorLoader loads all the data
-     */
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-
-    private void addEmailsToAutoComplete(final List<String>
-                                                 emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView
-        // what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line,
-                        emailAddressCollection);
-
-//        mEmailView.setAdapter(adapter);
-    }
-
-
-    private interface ProfileQuery {
-        /**
-         * The Projection.
-         */
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        /**
-         * The constant ADDRESS.
-         */
-        int ADDRESS = 0;
-        /**
-         * The constant IS_PRIMARY.
-         */
-        int IS_PRIMARY = 1;
-    }
+//    private void cancelLogin() {
+//        startActivity(new Intent(LoginActivity.this, LoginActivity.class));
+//    }
 }
+
 
