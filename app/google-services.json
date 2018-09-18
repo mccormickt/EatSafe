@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "319490864401",
+    "firebase_url": "https://eatsafe-98834.firebaseio.com",
+    "project_id": "eatsafe-98834",
+    "storage_bucket": "eatsafe-98834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319490864401:android:6081473fd7eaf775",
+        "android_client_info": {
+          "package_name": "edu.gatech.cc.eatsafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319490864401-7cl8rp25u9qpt4tsi06nn73sk9tjovk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqbIFkkGLUBi0oGdPMHIfndGX0OonpbwU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
