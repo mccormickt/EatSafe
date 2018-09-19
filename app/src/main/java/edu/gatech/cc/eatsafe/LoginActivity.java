@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+
+import android.provider.ContactsContract;
+
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +25,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+
+import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
