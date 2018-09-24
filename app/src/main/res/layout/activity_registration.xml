@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.gatech.cc.eatsafe.RegistrationActivity">
+
+    <Button
+            android:id="@+id/registration_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:layout_alignEnd="@+id/password_string" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="238dp"/>
+    <EditText
+            android:id="@+id/password_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:layout_alignParentTop="true" android:layout_marginTop="221dp"
+            android:layout_centerHorizontal="true"/>
+    <EditText
+            android:id="@+id/user_email_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textNoSuggestions|textEmailAddress"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="128dp" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:id="@+id/register_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="41dp"
+            android:text="@string/registerNewUser" android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material" android:textSize="24sp"
+            android:fontFamily="sans-serif-smallcaps"/>
+    <TextView
+            android:id="@+id/new_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="195dp"
+            android:labelFor="@+id/password_string"
+            android:text="@string/newPassword"
+            android:layout_alignParentTop="true" android:layout_alignStart="@+id/password_string"/>
+    <TextView
+            android:id="@+id/new_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/user_email_string"
+            android:text="@string/newEmail"
+            android:layout_alignStart="@+id/password_string" android:layout_alignParentTop="true"
+            android:layout_marginTop="101dp"/>
+    <ImageView
+            android:layout_width="234dp"
+            android:layout_height="150dp" app:srcCompat="@drawable/eatsafe" android:id="@+id/eatsafe"
+            android:layout_centerHorizontal="true" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="65dp"/>
+
+</RelativeLayout>

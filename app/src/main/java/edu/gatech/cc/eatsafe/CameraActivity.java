@@ -1,12 +1,10 @@
 package edu.gatech.cc.eatsafe;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -20,6 +18,8 @@ import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.wonderkiln.camerakit.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -133,10 +133,18 @@ public class CameraActivity extends AppCompatActivity {
                 toast.show();
             } else {
                 //Show barcode scan works by printing to screen
-                Toast toast = Toast.makeText(CameraActivity.this,
-                        "Barcode Scanned!: " + barcode.getRawValue(),
-                        Toast.LENGTH_LONG);
-                toast.show();
+                GetNutrition api = GetNutrition.getInstance(this);
+                String value = barcode.getRawValue();
+                api.getFoodByKeyword(value, 1, new NutritionCallback() {
+                    @Override
+                    public void onSuccess(JSONObject result) throws JSONException {
+                        String name = result.getJSONObject("list").getJSONArray("item")
+                                .getJSONObject(0).getString("name");
+                        Toast toast = Toast.makeText(CameraActivity.this,
+                                "Barcode Scanned!: " + name, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
             }
         }
     }
