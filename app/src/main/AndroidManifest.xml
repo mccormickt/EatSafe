@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-feature
             android:name="android.hardware.camera"
@@ -36,11 +37,14 @@
                 android:label="@string/title_activity_home"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".Camera">
-        </activity>
         <activity
                 android:name=".CameraActivity"
                 android:label="@string/title_activity_camera"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+                android:name=".RegistrationActivity"
+                android:label="@string/title_activity_registration"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
