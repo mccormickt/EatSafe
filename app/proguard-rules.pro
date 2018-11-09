@@ -16,3 +16,13 @@
 #   public *;
 #}
 -dontwarn com.google.android.gms.**
+
+# Add this global rule
+-keepattributes Signature
+
+# This rule will properly ProGuard all the model classes in
+# the package edu.gatech.cc.eatsafe. Modify to fit the structure
+# of your app.
+-keepclassmembers class edu.gatech.cc.eatsafe.** {
+  *;
+}

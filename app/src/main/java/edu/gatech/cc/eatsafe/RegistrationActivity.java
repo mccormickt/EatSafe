@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -124,6 +125,13 @@ public class RegistrationActivity extends AppCompatActivity {
                                         "Registration Complete!",
                                         Toast.LENGTH_SHORT);
                                 pHolder.show();
+
+                                // Add user to database
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                DatabaseReference reference = mDatabase.child("users").child(user.getUid()).push();
+                                reference.setValue(new UserInformation("", "", null,
+                                        user.getEmail(), new ArrayList<String>()));
+
                                 startActivity(
                                         new Intent(RegistrationActivity.this, HomeActivity.class));
                             } else {
@@ -137,10 +145,6 @@ public class RegistrationActivity extends AppCompatActivity {
                         }
                     });
 
-            // Add user to database
-            DatabaseReference reference = mDatabase.child("users").child(email).push();
-            reference.setValue(new UserInformation("", "", null, email,
-                    new ArrayList<String>()));
 
         } else {
             focusView.requestFocus();

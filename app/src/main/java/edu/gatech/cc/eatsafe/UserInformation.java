@@ -10,6 +10,9 @@ public class UserInformation {
     private String email;
     private ArrayList<String> allergens;
 
+    // Default constructor for firebase
+    public UserInformation(){}
+
     public UserInformation(String firstName, String lastName, Date birthdate, String email,
                            ArrayList<String> allergens) {
         this.firstName = firstName;
