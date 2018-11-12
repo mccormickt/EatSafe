@@ -1,20 +1,22 @@
 package edu.gatech.cc.eatsafe;
 
-import java.util.ArrayList;
-import java.util.Date;
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserInformation {
     private String firstName;
     private String lastName;
-    private Date birthdate;
+    private String birthdate;
     private String email;
-    private ArrayList<String> allergens;
+    private Map<String, Boolean> allergens;
 
     // Default constructor for firebase
     public UserInformation(){}
 
-    public UserInformation(String firstName, String lastName, Date birthdate, String email,
-                           ArrayList<String> allergens) {
+    public UserInformation(String firstName, String lastName, String birthdate, String email,
+                           Map<String, Boolean> allergens) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
@@ -30,15 +32,15 @@ public class UserInformation {
         this.lastName = newLastName;
     }
 
-    public void setBirthdate(Date newBirthdate) {
-        this.birthdate = newBirthdate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public void setEmail(String newEmail) {
         this.email = newEmail;
     }
 
-    public void setAllergens(ArrayList<String> newAllergens) {
+    public void setAllergens(Map<String, Boolean> newAllergens) {
         this.allergens = newAllergens;
     }
 
@@ -50,7 +52,7 @@ public class UserInformation {
         return lastName;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
@@ -58,7 +60,19 @@ public class UserInformation {
         return email;
     }
 
-    public ArrayList<String> getAllergens() {
+    public Map<String, Boolean> getAllergens() {
         return allergens;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("firstName", firstName);
+        result.put("lastName", lastName);
+        result.put("email", email);
+        result.put("birthdate", birthdate);
+        result.put("allergens", allergens);
+
+        return result;
     }
 }

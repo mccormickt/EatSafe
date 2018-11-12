@@ -40,7 +40,8 @@ public class HomeActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        comingSoon();
+                        startActivity(new Intent(HomeActivity.this,
+                                ProfileActivity.class));
                     }
                 }
         );

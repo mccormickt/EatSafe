@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import static edu.gatech.cc.eatsafe.LoginActivity.VALID_EMAIL_ADDRESS_REGEX;
@@ -128,9 +129,20 @@ public class RegistrationActivity extends AppCompatActivity {
 
                                 // Add user to database
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                DatabaseReference reference = mDatabase.child("users").child(user.getUid()).push();
-                                reference.setValue(new UserInformation("", "", null,
-                                        user.getEmail(), new ArrayList<String>()));
+                                DatabaseReference reference = mDatabase.child("users").child(mAuth.getUid());
+
+                                // Initial allergy data
+                                HashMap<String, Boolean> defaultAllergens = new HashMap<>();
+                                defaultAllergens.put("dairy", false);
+                                defaultAllergens.put("fish", false);
+                                defaultAllergens.put("peanuts", false);
+                                defaultAllergens.put("shellfish", false);
+                                defaultAllergens.put("soy", false);
+                                defaultAllergens.put("treenuts", false);
+                                defaultAllergens.put("gluten", false);
+
+                                reference.setValue(new UserInformation("", "", "",
+                                        user.getEmail(), defaultAllergens).toMap());
 
                                 startActivity(
                                         new Intent(RegistrationActivity.this, HomeActivity.class));
