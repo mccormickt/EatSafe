@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="edu.gatech.cc.eatsafe.ProfileActivity">
+
+    <RadioButton
+            android:id="@+id/dairy"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:checked="true"
+            android:duplicateParentState="true"
+            android:text="Dairy"
+            app:layout_constraintEnd_toStartOf="@+id/peanuts"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allergens"
+            android:layout_alignEnd="@+id/profile_birthday" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="182dp"/>
+    <RadioButton
+            android:id="@+id/treenuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tree Nuts"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gluten"
+            app:layout_constraintHorizontal_bias="0.087"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eggs"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_alignParentBottom="true" android:layout_marginBottom="128dp"
+            android:layout_toEndOf="@+id/profile_last_name"/>
+    <RadioButton
+            android:id="@+id/peanuts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peanuts"
+            app:layout_constraintEnd_toStartOf="@+id/soy"
+            app:layout_constraintTop_toBottomOf="@+id/allergens"
+            android:layout_alignTop="@+id/dairy" android:layout_toStartOf="@+id/save_profile_button"/>
+    <RadioButton
+            android:id="@+id/soy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="false"
+            android:text="Soy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allergens"
+            android:layout_alignTop="@+id/treenuts" android:layout_alignStart="@+id/dairy"/>
+    <RadioButton
+            android:id="@+id/fish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/soy"
+            android:layout_toEndOf="@+id/profile_last_name" android:layout_alignTop="@+id/dairy"/>
+    <RadioButton
+            android:id="@+id/eggs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Eggs"
+            app:layout_constraintEnd_toStartOf="@+id/shellfish"
+            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dairy"
+            android:layout_alignEnd="@+id/profile_birthday" android:layout_below="@+id/dairy"/>
+    <RadioButton
+            android:id="@+id/gluten"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:text="Wheat/Gluten"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shellfish"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_alignEnd="@+id/shellfish" android:layout_alignBottom="@+id/treenuts"/>
+    <RadioButton
+            android:id="@+id/shellfish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Shellfish"
+            app:layout_constraintEnd_toStartOf="@+id/fish"
+            app:layout_constraintTop_toBottomOf="@+id/peanuts"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="18dp" android:layout_alignTop="@+id/dairy"/>
+    <EditText
+            android:id="@+id/profile_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_alignStart="@+id/profile_bday"
+            android:layout_below="@+id/profile_last_name" android:inputType="textCapWords"/>
+    <TextView
+            android:id="@+id/profile_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/profile_bday"
+            android:text="Last Name"
+            android:layout_alignStart="@+id/profile_bday"
+            android:layout_alignParentTop="true" android:layout_marginTop="164dp"/>
+    <Button
+            android:id="@+id/save_profile_button"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="save"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="36dp"
+            android:layout_marginBottom="50dp" android:layout_alignParentBottom="true"/>
+    <EditText
+            android:id="@+id/profile_bday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_alignStart="@+id/profile_firstname"
+            android:layout_centerVertical="true" android:inputType="date"/>
+    <EditText
+            android:id="@+id/profile_firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textNoSuggestions"
+            android:layout_alignEnd="@+id/profile_title" android:layout_below="@+id/profile_first_name"/>
+    <TextView
+            android:id="@+id/profile_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:text="My Profile" android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material" android:textSize="24sp"
+            android:fontFamily="sans-serif-smallcaps"/>
+    <TextView
+            android:id="@+id/profile_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/profile_bday"
+            android:text="Birthday"
+            android:layout_alignStart="@+id/profile_bday"
+            android:layout_above="@+id/profile_bday"/>
+    <TextView
+            android:id="@+id/profile_first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/profile_firstname"
+            android:text="First Name"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="85dp" android:layout_alignStart="@+id/profile_bday"/>
+    <ImageView
+            android:layout_width="126dp"
+            android:layout_height="89dp" app:srcCompat="@drawable/eatsafe" android:id="@+id/eatsafe"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_alignStart="@+id/profile_lastname"/>
+    <TextView
+            android:text="Allergies &amp; Restrictions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="233dp" android:layout_alignStart="@+id/profile_bday"
+            android:id="@+id/profile_allergies"/>
+
+</RelativeLayout>

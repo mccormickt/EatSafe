@@ -15,7 +15,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import static edu.gatech.cc.eatsafe.LoginActivity.VALID_EMAIL_ADDRESS_REGEX;
@@ -30,6 +35,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mPasswordView;
 
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -108,6 +114,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
         if (!cancel) {
+            // Create user authentication
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -119,6 +126,24 @@ public class RegistrationActivity extends AppCompatActivity {
                                         "Registration Complete!",
                                         Toast.LENGTH_SHORT);
                                 pHolder.show();
+
+                                // Add user to database
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                DatabaseReference reference = mDatabase.child("users").child(mAuth.getUid());
+
+                                // Initial allergy data
+                                HashMap<String, Boolean> defaultAllergens = new HashMap<>();
+                                defaultAllergens.put("dairy", false);
+                                defaultAllergens.put("fish", false);
+                                defaultAllergens.put("peanuts", false);
+                                defaultAllergens.put("shellfish", false);
+                                defaultAllergens.put("soy", false);
+                                defaultAllergens.put("treenuts", false);
+                                defaultAllergens.put("gluten", false);
+
+                                reference.setValue(new UserInformation("", "", "",
+                                        user.getEmail(), defaultAllergens).toMap());
+
                                 startActivity(
                                         new Intent(RegistrationActivity.this, HomeActivity.class));
                             } else {
@@ -131,6 +156,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+
         } else {
             focusView.requestFocus();
         }
