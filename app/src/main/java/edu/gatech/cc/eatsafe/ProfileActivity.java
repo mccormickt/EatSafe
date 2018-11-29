@@ -6,9 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
@@ -22,13 +20,13 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText firstNameField;
     private EditText lastNameField;
     private EditText birthdateField;
-    private RadioButton dairy;
-    private RadioButton fish;
-    private RadioButton peanuts;
-    private RadioButton shellfish;
-    private RadioButton soy;
-    private RadioButton treenuts;
-    private RadioButton gluten;
+    private CheckBox dairy;
+    private CheckBox fish;
+    private CheckBox peanuts;
+    private CheckBox shellfish;
+    private CheckBox soy;
+    private CheckBox treenuts;
+    private CheckBox gluten;
     private Button saveButton;
 
     // Data References
@@ -84,6 +82,10 @@ public class ProfileActivity extends AppCompatActivity {
                         authUser.getEmail(), newMap);
 
                 dataBase.setValue(user.toMap());
+                Toast.makeText(ProfileActivity.this,
+                        "Profile Updated",
+                        Toast.LENGTH_LONG).show();
+
                 startActivity(new Intent(ProfileActivity.this,  HomeActivity.class));
             }
         });
