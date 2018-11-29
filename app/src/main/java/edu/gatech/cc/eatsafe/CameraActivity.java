@@ -1,17 +1,24 @@
 package edu.gatech.cc.eatsafe;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.*;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetector;
@@ -22,7 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class CameraActivity extends AppCompatActivity {
     @BindView(R.id.camView) CameraView mCameraView;
@@ -32,12 +39,19 @@ public class CameraActivity extends AppCompatActivity {
     private FirebaseVisionBarcodeDetectorOptions barcodeDetectorOptions;
     private FirebaseVisionBarcodeDetector barcodeDetector;
 
+    // Firebase Databases
+    private DatabaseReference database;
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
         ButterKnife.bind(this);
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getUid());
 
         mCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +128,9 @@ public class CameraActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast toast = Toast.makeText(CameraActivity.this,
+                        Toast.makeText(CameraActivity.this,
                                 "Failed to Read Barcode!",
-                                Toast.LENGTH_LONG);
-                        toast.show();
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -127,26 +140,105 @@ public class CameraActivity extends AppCompatActivity {
             //Ensure this is a product barcode
             int valueType = barcode.getValueType();
             if (valueType != FirebaseVisionBarcode.TYPE_PRODUCT) {
-                Toast toast = Toast.makeText(CameraActivity.this,
+                Toast.makeText(CameraActivity.this,
                         "Incorrect Barcode Type!: " + valueType,
-                        Toast.LENGTH_LONG);
-                toast.show();
+                        Toast.LENGTH_LONG).show();
             } else {
-                //Show barcode scan works by printing to screen
-                GetNutrition api = GetNutrition.getInstance(this);
+                // Initialize Nutrition API library
+                final GetNutrition api = GetNutrition.getInstance(this);
                 String value = barcode.getRawValue();
+
+                // Initial API call to get database reference number
                 api.getFoodByKeyword(value, 1, new NutritionCallback() {
                     @Override
                     public void onSuccess(JSONObject result) throws JSONException {
-                        String name = result.getJSONObject("list").getJSONArray("item")
-                                .getJSONObject(0).getString("name");
-                        Toast toast = Toast.makeText(CameraActivity.this,
-                                "Barcode Scanned!: " + name, Toast.LENGTH_LONG);
-                        toast.show();
+                        // Request unsuccessful, alert user
+                        if (result.has("errors")) {
+                            Toast.makeText(CameraActivity.this,
+                                    "Product not found!",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        String id = result.getJSONObject("list").getJSONArray("item")
+                                .getJSONObject(0).getString("ndbno");
+
+                        // Second API call to get detailed results
+                        api.getFoodFacts(Integer.parseInt(id), new NutritionCallback() {
+                            @Override
+                            public void onSuccess(JSONObject result) throws JSONException {
+                                // Get ingredients from refined search
+                                String ingredients = result.getJSONArray("foods").getJSONObject(0)
+                                        .getJSONObject("food").getJSONObject("ing").getString("desc");
+                                handleIngredients(ingredients);
+                            }
+
+                        });
                     }
                 });
             }
         }
     }
 
+    private void handleIngredients(String ingredients) {
+        // Strings to find allergies
+        String[] dairyStrings = {"MILK", "CHEESE", "YOGURT", "CREAM"};
+        String[] fishStrings = {"FISH", "SALMON", "TILAPIA", "HALIBUT", "COD"};
+        String[] glutenStrings = {"GLUTEN", "WHEAT", "GRAIN", "FLOUR", "BREAD", "YEAST", "MEAT SUBSTITUTE"};
+        String[] peanutStrings = {"PEANUT"};
+        String[] shellfishStrings = {"SHELLFISH", "SHRIMP", "LOBSTER", "CRAB", "CRAWFISH", "CLAM", "OYSTER", "SCALLOP", "MUSSEL"};
+        String[] soyStrings = {"SOY", "SOYBEAN"};
+        String[] treenutStrings = {"ALMOND", "CASHEW", "HAZELNUT", "PECAN", "PISTACHIO", "MACADAMIA", "CHESTNUT", "PINE", "WALNUTS", "SHEA"};
+
+        // Check if allergen is in ingredient string
+        boolean dairy = Arrays.stream(dairyStrings).parallel().anyMatch(ingredients::contains);
+        boolean fish = Arrays.stream(fishStrings).parallel().anyMatch(ingredients::contains);
+        boolean gluten = Arrays.stream(glutenStrings).parallel().anyMatch(ingredients::contains);
+        boolean peanuts = Arrays.stream(peanutStrings).parallel().anyMatch(ingredients::contains);
+        boolean shellfish = Arrays.stream(shellfishStrings).parallel().anyMatch(ingredients::contains);
+        boolean soy = Arrays.stream(soyStrings).parallel().anyMatch(ingredients::contains);
+        boolean treenuts = Arrays.stream(treenutStrings).parallel().anyMatch(ingredients::contains);
+
+        // Report existing allergies if user has them listed
+        database.child("allergens").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<String> alertAllergies = new ArrayList<>();
+                Map<String, Boolean> allergens = (Map) dataSnapshot.getValue();
+                if (dairy && allergens.get("dairy")) {
+                    alertAllergies.add("Dairy");
+                }
+                if (fish && allergens.get("fish")) {
+                    alertAllergies.add("Fish");
+                }
+                if (gluten && allergens.get("gluten")) {
+                    alertAllergies.add("Gluten");
+                }
+                if (peanuts && allergens.get("peanuts")) {
+                    alertAllergies.add("Peanuts");
+                }
+                if (shellfish && allergens.get("shellfish")) {
+                    alertAllergies.add("Shellfish");
+                }
+                if (soy && allergens.get("soy")) {
+                    alertAllergies.add("Soy");
+                }
+                if (treenuts && allergens.get("treenuts")) {
+                    alertAllergies.add("Treenuts");
+                }
+
+                // Alert relevant detected allergies
+                String title = alertAllergies.isEmpty() ? "No Allergies Detected!" : "Allergies Detected";
+                AlertDialog.Builder builder = new AlertDialog.Builder(CameraActivity.this);
+                builder.setTitle(title)
+                        .setItems(alertAllergies.toArray(new CharSequence[alertAllergies.size()]),null)
+                        .create().show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

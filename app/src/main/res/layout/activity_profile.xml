@@ -7,88 +7,62 @@
         android:layout_height="match_parent"
         tools:context="edu.gatech.cc.eatsafe.ProfileActivity">
 
-    <RadioButton
+    <CheckBox
             android:id="@+id/dairy"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:checked="true"
             android:duplicateParentState="true"
             android:text="Dairy"
-            app:layout_constraintEnd_toStartOf="@+id/peanuts"
-            app:layout_constraintHorizontal_bias="0.125"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/allergens"
             android:layout_alignEnd="@+id/profile_birthday" android:layout_alignParentBottom="true"
             android:layout_marginBottom="182dp"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/treenuts"
-            android:layout_width="wrap_content"
+            android:layout_width="113dp"
             android:layout_height="wrap_content"
             android:text="Tree Nuts"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gluten"
-            app:layout_constraintHorizontal_bias="0.087"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eggs"
-            app:layout_constraintVertical_bias="0.0"
             android:layout_alignParentBottom="true" android:layout_marginBottom="128dp"
             android:layout_toEndOf="@+id/profile_last_name"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/peanuts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Peanuts"
-            app:layout_constraintEnd_toStartOf="@+id/soy"
-            app:layout_constraintTop_toBottomOf="@+id/allergens"
             android:layout_alignTop="@+id/dairy" android:layout_toStartOf="@+id/save_profile_button"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/soy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:duplicateParentState="false"
             android:text="Soy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/allergens"
             android:layout_alignTop="@+id/treenuts" android:layout_alignStart="@+id/dairy"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/fish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fish"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/soy"
             android:layout_toEndOf="@+id/profile_last_name" android:layout_alignTop="@+id/dairy"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/eggs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Eggs"
-            app:layout_constraintEnd_toStartOf="@+id/shellfish"
-            app:layout_constraintHorizontal_bias="0.094"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dairy"
             android:layout_alignEnd="@+id/profile_birthday" android:layout_below="@+id/dairy"/>
-    <RadioButton
+    <CheckBox
             android:id="@+id/gluten"
             android:layout_width="wrap_content"
-            android:layout_height="29dp"
+            android:layout_height="wrap_content"
             android:checked="false"
             android:duplicateParentState="false"
             android:text="Wheat/Gluten"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shellfish"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_alignEnd="@+id/shellfish" android:layout_alignBottom="@+id/treenuts"/>
-    <RadioButton
+            android:layout_alignEnd="@+id/shellfish" android:layout_alignTop="@+id/treenuts"/>
+    <CheckBox
             android:id="@+id/shellfish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Shellfish"
-            app:layout_constraintEnd_toStartOf="@+id/fish"
-            app:layout_constraintTop_toBottomOf="@+id/peanuts"
             android:layout_alignParentEnd="true" android:layout_marginEnd="18dp" android:layout_alignTop="@+id/dairy"/>
     <EditText
             android:id="@+id/profile_lastname"
