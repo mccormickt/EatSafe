@@ -65,7 +65,7 @@ public class FriendsActivity extends AppCompatActivity {
                 //user.setFriends(new ArrayList<String>());
                 try {
                     ArrayList<String> friends = user.getFriends();
-                    if (friends.size() == 0) {
+                    if (friends.size() == 0 || friends == null) {
                         text = "No friends to display";
                     } else {
                         StringBuilder sb = new StringBuilder();

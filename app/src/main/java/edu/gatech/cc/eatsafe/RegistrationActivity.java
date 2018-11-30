@@ -142,10 +142,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 defaultAllergens.put("gluten", false);
 
                                 reference.setValue(new UserInformation("", "", "",
-                                        user.getEmail(), defaultAllergens, new ArrayList<String>()).toMap());
+                                        user.getEmail(), defaultAllergens, new ArrayList<>()).toMap());
 
-                                startActivity(
-                                        new Intent(RegistrationActivity.this, HomeActivity.class));
+                                startActivity(new Intent(RegistrationActivity.this, HomeActivity.class));
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());

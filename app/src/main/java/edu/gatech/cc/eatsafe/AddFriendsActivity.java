@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,6 +40,7 @@ public class AddFriendsActivity extends AppCompatActivity {
 
     // flag
     private boolean addedFriend = false;
+    private boolean removedFriend = false;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -48,99 +50,14 @@ public class AddFriendsActivity extends AppCompatActivity {
         //Initialize Authentication/Database Client
         auth = FirebaseAuth.getInstance();
         authUser = auth.getCurrentUser();
-        dataBase = FirebaseDatabase.getInstance().getReference().child("users").child(authUser.getUid());
+        dataBase = FirebaseDatabase.getInstance().getReference().child("users");
 
         // UI references
         friendName = findViewById(R.id.profile_friendname);
         addButton = findViewById(R.id.add_button);
         removeButton = findViewById(R.id.remove_button);
 
-        getData();
-
-        findViewById(R.id.add_button).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String name = friendName.getText().toString();
-                        if (name.equals("")) {
-                            Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                    "Please enter a username",
-                                    Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            try {
-                                ArrayList<String> friends = user.getFriends();
-                                friends.add(name);
-                                user.setFriends(friends);
-                            } catch (NullPointerException e) {
-                                ArrayList<String> friends = new ArrayList<>();
-                                friends.add(name);
-                                user.setFriends(friends);
-                            }
-
-                            addedFriend = true;
-                            // would be false if username not in the DB -> not handling that rn LOL
-                            UserInformation newUser = new UserInformation(user.getFirstName(),
-                                    user.getLastName(), user.getBirthdate(), authUser.getEmail(),
-                                    user.getAllergens(), user.getFriends());
-                            dataBase.setValue(newUser.toMap());
-
-                            if (!addedFriend) {
-                                Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                        "Unable to add friend",
-                                        Toast.LENGTH_SHORT);
-                                toast.show();
-                            } else {
-                                Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                        "Added friend!",
-                                        Toast.LENGTH_SHORT);
-                                toast.show();
-                            }
-                            startActivity(new Intent(AddFriendsActivity.this,
-                                    FriendsActivity.class));
-                        }
-                    }
-                }
-        );
-        findViewById(R.id.remove_button).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String name = friendName.getText().toString();
-                        if (name.equals("")) {
-                            Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                    "Please enter a username",
-                                    Toast.LENGTH_SHORT);
-                            toast.show();
-                        } else {
-                            try {
-                                ArrayList<String> friends = user.getFriends();
-                                friends.removeAll(Collections.singleton(name));
-                                user.setFriends(friends);
-                            } catch (NullPointerException e) {
-                                // nothing
-                            }
-
-                            // would be false if username not in the DB -> not handling that rn LOL
-                            UserInformation newUser = new UserInformation(user.getFirstName(),
-                                    user.getLastName(), user.getBirthdate(), authUser.getEmail(),
-                                    user.getAllergens(), user.getFriends());
-                            dataBase.setValue(newUser.toMap());
-
-                            Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                    "Removed friend!",
-                                    Toast.LENGTH_SHORT);
-                            toast.show();
-                            startActivity(new Intent(AddFriendsActivity.this,
-                                    FriendsActivity.class));
-                        }
-                    }
-                }
-        );
-
-    }
-    private void getData() {
-        dataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+        dataBase.child(authUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(UserInformation.class);
@@ -151,5 +68,130 @@ public class AddFriendsActivity extends AppCompatActivity {
 
             }
         });
+
+        addButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String name = friendName.getText().toString().toLowerCase();
+                        if (name.equals("")) {
+                            Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                    "Please enter a username",
+                                    Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {
+                            ArrayList<String> friends = user.getFriends();
+                            if (!friends.contains(name)) {
+                                if (friends != null) {
+                                    friends.add(name);
+                                    user.setFriends(friends);
+                                } else {
+                                    friends = new ArrayList<>();
+                                    friends.add(name);
+                                    user.setFriends(friends);
+                                }
+
+                                dataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot userRef : dataSnapshot.getChildren()) {
+                                            UserInformation queryUser = userRef.getValue(UserInformation.class);
+                                            Log.wtf("AddFriendsActivity", "REMOVING: " + queryUser.getEmail());
+                                            if (queryUser.getEmail().equals(name)) {
+                                                // would be false if username not in the DB
+                                                UserInformation newUser = new UserInformation(user.getFirstName(),
+                                                        user.getLastName(), user.getBirthdate(), authUser.getEmail(),
+                                                        user.getAllergens(), user.getFriends());
+                                                dataBase.child(authUser.getUid()).setValue(newUser.toMap());
+
+                                                Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                                        "Added friend!",
+                                                        Toast.LENGTH_SHORT);
+                                                toast.show();
+                                                startActivity(new Intent(AddFriendsActivity.this,
+                                                        FriendsActivity.class));
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                            }
+
+                            if (!addedFriend) {
+                                Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                        "Unable to add friend",
+                                        Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+                        }
+                    }
+                }
+        );
+
+        removeButton.setOnClickListener(
+                new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String name = friendName.getText().toString();
+                            if (name.equals("")) {
+                                Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                        "Please enter a username",
+                                        Toast.LENGTH_SHORT);
+                                toast.show();
+                            } else {
+                                ArrayList<String> friends = user.getFriends();
+                                if (friends.contains(name)) {
+                                    if (friends != null) {
+                                        friends.remove(name);
+                                        user.setFriends(friends);
+                                    }
+
+                                    dataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot userRef : dataSnapshot.getChildren()) {
+                                                UserInformation queryUser = userRef.getValue(UserInformation.class);
+                                                Log.wtf("AddFriendsActivity", "REMOVING: " + queryUser.getEmail());
+                                                if (queryUser.getEmail().equals(name)) {
+                                                    // would be false if username not in the DB
+                                                    UserInformation newUser = new UserInformation(user.getFirstName(),
+                                                            user.getLastName(), user.getBirthdate(), authUser.getEmail(),
+                                                            user.getAllergens(), user.getFriends());
+
+                                                    removedFriend = true;
+                                                    dataBase.child(authUser.getUid()).setValue(newUser.toMap());
+                                                    Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                                            "Removed friend!",
+                                                            Toast.LENGTH_SHORT);
+                                                    toast.show();
+                                                    startActivity(new Intent(AddFriendsActivity.this,
+                                                            FriendsActivity.class));
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                }
+
+                                if (!removedFriend) {
+                                    Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                            "Unable to remove friend",
+                                            Toast.LENGTH_SHORT);
+                                    toast.show();
+                                }
+                            }
+                        }
+                }
+        );
     }
 }
+
