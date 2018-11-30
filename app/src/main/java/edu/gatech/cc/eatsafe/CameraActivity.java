@@ -1,23 +1,19 @@
 package edu.gatech.cc.eatsafe;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
@@ -30,6 +26,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CameraActivity extends AppCompatActivity {
     @BindView(R.id.camView) CameraView mCameraView;
@@ -51,7 +48,7 @@ public class CameraActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         auth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance().getReference().child("users").child(auth.getUid());
+        database = FirebaseDatabase.getInstance().getReference().child("users");
 
         mCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,41 +196,72 @@ public class CameraActivity extends AppCompatActivity {
         boolean soy = Arrays.stream(soyStrings).parallel().anyMatch(ingredients::contains);
         boolean treenuts = Arrays.stream(treenutStrings).parallel().anyMatch(ingredients::contains);
 
-        // Report existing allergies if user has them listed
-        database.child("allergens").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> alertAllergies = new ArrayList<>();
-                Map<String, Boolean> allergens = (Map) dataSnapshot.getValue();
-                if (dairy && allergens.get("dairy")) {
-                    alertAllergies.add("Dairy");
-                }
-                if (fish && allergens.get("fish")) {
-                    alertAllergies.add("Fish");
-                }
-                if (gluten && allergens.get("gluten")) {
-                    alertAllergies.add("Gluten");
-                }
-                if (peanuts && allergens.get("peanuts")) {
-                    alertAllergies.add("Peanuts");
-                }
-                if (shellfish && allergens.get("shellfish")) {
-                    alertAllergies.add("Shellfish");
-                }
-                if (soy && allergens.get("soy")) {
-                    alertAllergies.add("Soy");
-                }
-                if (treenuts && allergens.get("treenuts")) {
-                    alertAllergies.add("Treenuts");
-                }
+        // Report existing allergies if user or friends have them listed
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserInformation queryUser = dataSnapshot.child(auth.getCurrentUser().getUid()).getValue(UserInformation.class);
+                    Map<String, Boolean> allergens = queryUser.getAllergens();
+                    Map<String, String> friendMap =  new HashMap<>();
 
-                // Alert relevant detected allergies
-                String title = alertAllergies.isEmpty() ? "No Allergies Detected!" : "Allergies Detected";
-                AlertDialog.Builder builder = new AlertDialog.Builder(CameraActivity.this);
-                builder.setTitle(title)
-                        .setItems(alertAllergies.toArray(new CharSequence[alertAllergies.size()]),null)
-                        .create().show();
-            }
+                    for (DataSnapshot user : dataSnapshot.getChildren()) {
+                        UserInformation friend = user.getValue(UserInformation.class);
+
+                        // Skip yourself
+                        if (friend.getEmail().equals(auth.getCurrentUser().getEmail())) {
+                            continue;
+                        }
+
+                        // Add friends allergies
+                        allergens.keySet().forEach(key -> {
+                            boolean allergic = friend.getAllergens().get(key);
+                            allergens.put(key, allergic);
+
+                            // Record which friends are allergic to what
+                            if (allergic) {
+                                friendMap.put(key, friend.getEmail());
+                            }
+                        });
+                    }
+
+                    ArrayList<String> alertAllergies = new ArrayList<>();
+                    if (dairy && allergens.get("dairy")) {
+                        alertAllergies.add("Dairy");
+                    }
+                    if (fish && allergens.get("fish")) {
+                        alertAllergies.add("Fish");
+                    }
+                    if (gluten && allergens.get("gluten")) {
+                        alertAllergies.add("Gluten");
+                    }
+                    if (peanuts && allergens.get("peanuts")) {
+                        alertAllergies.add("Peanuts");
+                    }
+                    if (shellfish && allergens.get("shellfish")) {
+                        alertAllergies.add("Shellfish");
+                    }
+                    if (soy && allergens.get("soy")) {
+                        alertAllergies.add("Soy");
+                    }
+                    if (treenuts && allergens.get("treenuts")) {
+                        alertAllergies.add("Treenuts");
+                    }
+
+                    // Alert relevant detected allergies
+                    ArrayList<String> friends = new ArrayList<>(new HashSet<>(friendMap.values()));
+                    String title;
+                    if (alertAllergies.isEmpty() && friends.isEmpty()) {
+                        title = "No Allergies Detected!";
+                    } else {
+                       title = "Allergies Detected";
+                       friends.add(0, "Friends with these allergies: ");
+                       alertAllergies.addAll(friends);
+                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CameraActivity.this);
+                    builder.setTitle(title)
+                            .setItems(alertAllergies.toArray(new CharSequence[alertAllergies.size()]),null)
+                            .create().show();
+                }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
