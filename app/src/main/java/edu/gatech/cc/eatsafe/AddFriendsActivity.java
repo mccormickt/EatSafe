@@ -112,6 +112,10 @@ public class AddFriendsActivity extends AppCompatActivity {
                                                         FriendsActivity.class));
                                             }
                                         }
+                                        Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                                "Unable to add friend",
+                                                Toast.LENGTH_SHORT);
+                                        toast.show();
                                     }
 
                                     @Override
@@ -120,13 +124,6 @@ public class AddFriendsActivity extends AppCompatActivity {
                                     }
                                 });
 
-                            }
-
-                            if (!addedFriend) {
-                                Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                        "Unable to add friend",
-                                        Toast.LENGTH_SHORT);
-                                toast.show();
                             }
                         }
                     }
@@ -163,7 +160,6 @@ public class AddFriendsActivity extends AppCompatActivity {
                                                             user.getLastName(), user.getBirthdate(), authUser.getEmail(),
                                                             user.getAllergens(), user.getFriends());
 
-                                                    removedFriend = true;
                                                     dataBase.child(authUser.getUid()).setValue(newUser.toMap());
                                                     Toast toast = Toast.makeText(AddFriendsActivity.this,
                                                             "Removed friend!",
@@ -173,6 +169,10 @@ public class AddFriendsActivity extends AppCompatActivity {
                                                             FriendsActivity.class));
                                                 }
                                             }
+                                            Toast toast = Toast.makeText(AddFriendsActivity.this,
+                                                    "Unable to remove friend",
+                                                    Toast.LENGTH_SHORT);
+                                            toast.show();
                                         }
 
                                         @Override
@@ -180,13 +180,6 @@ public class AddFriendsActivity extends AppCompatActivity {
 
                                         }
                                     });
-                                }
-
-                                if (!removedFriend) {
-                                    Toast toast = Toast.makeText(AddFriendsActivity.this,
-                                            "Unable to remove friend",
-                                            Toast.LENGTH_SHORT);
-                                    toast.show();
                                 }
                             }
                         }

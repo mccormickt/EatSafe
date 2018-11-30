@@ -203,7 +203,6 @@ public class CameraActivity extends AppCompatActivity {
                     UserInformation queryUser = dataSnapshot.child(auth.getCurrentUser().getUid()).getValue(UserInformation.class);
                     Map<String, Boolean> allergens = queryUser.getAllergens();
                     Map<String, String> friendMap =  new HashMap<>();
-
                     for (DataSnapshot user : dataSnapshot.getChildren()) {
                         UserInformation friend = user.getValue(UserInformation.class);
 
@@ -213,15 +212,17 @@ public class CameraActivity extends AppCompatActivity {
                         }
 
                         // Add friends allergies
-                        allergens.keySet().forEach(key -> {
-                            boolean allergic = friend.getAllergens().get(key);
-                            allergens.put(key, allergic);
+                        if (queryUser.getFriends().contains(friend.getEmail())) {
+                            allergens.keySet().forEach(key -> {
+                                boolean allergic = friend.getAllergens().get(key);
+                                allergens.put(key, allergic);
 
-                            // Record which friends are allergic to what
-                            if (allergic) {
-                                friendMap.put(key, friend.getEmail());
-                            }
-                        });
+                                // Record which friends are allergic to what
+                                if (allergic) {
+                                    friendMap.put(key, friend.getEmail());
+                                }
+                            });
+                        }
                     }
 
                     ArrayList<String> alertAllergies = new ArrayList<>();
