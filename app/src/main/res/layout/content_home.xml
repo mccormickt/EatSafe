@@ -22,12 +22,12 @@
             android:id="@+id/title"
             android:textSize="36sp" android:fontFamily="sans-serif-smallcaps"/>
     <ImageView
-            android:layout_width="250px"
+            android:layout_width="152dp"
             app:srcCompat="@drawable/eatsafe"
             android:id="@+id/logo"
-            android:layout_below="@+id/title" android:layout_centerHorizontal="true"
-            android:layout_height="250px" android:background="?android:attr/panelBackground"
-            android:contentDescription="TODO"/>
+            android:layout_centerHorizontal="true"
+            android:layout_height="156dp" android:background="?android:attr/panelBackground"
+            android:contentDescription="TODO" android:layout_below="@+id/title"/>
     <ImageButton
             android:layout_height="100dp" app:srcCompat="@drawable/camera"
             android:id="@+id/camera"
