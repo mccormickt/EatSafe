@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="edu.gatech.cc.eatsafe.AddFriendsActivity">
+
+    <Button
+            android:id="@+id/remove_button"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="36dp"
+            android:layout_marginBottom="50dp" android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_alignParentEnd="true" android:layout_marginEnd="36dp"
+        android:layout_marginBottom="100dp" android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/enter_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/profile_friendname"
+        android:text="Enter Friend's Username:"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="164dp"/>
+
+    <EditText
+            android:id="@+id/profile_friendname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginStart="80dp"
+            android:inputType="textCapWords|textNoSuggestions"
+            android:layout_marginTop="225dp"/>
+    <TextView
+            android:id="@+id/profile_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:text="Add Friends" android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material" android:textSize="24sp"
+            android:fontFamily="sans-serif-smallcaps"/>
+    <ImageView
+            android:layout_width="126dp"
+            android:layout_height="89dp" app:srcCompat="@drawable/eatsafe" android:id="@+id/eatsafe"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="45dp"/>
+
+</RelativeLayout>

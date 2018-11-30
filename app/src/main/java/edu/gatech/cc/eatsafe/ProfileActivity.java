@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                 newMap.put("gluten", gluten.isChecked());
 
                 user = new UserInformation(firstname, lastname, birthday,
-                        authUser.getEmail(), newMap);
+                        authUser.getEmail(), newMap, user.getFriends());
 
                 dataBase.setValue(user.toMap());
                 Toast.makeText(ProfileActivity.this,

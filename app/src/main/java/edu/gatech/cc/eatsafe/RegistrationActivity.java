@@ -142,7 +142,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 defaultAllergens.put("gluten", false);
 
                                 reference.setValue(new UserInformation("", "", "",
-                                        user.getEmail(), defaultAllergens).toMap());
+                                        user.getEmail(), defaultAllergens, new ArrayList<String>()).toMap());
 
                                 startActivity(
                                         new Intent(RegistrationActivity.this, HomeActivity.class));

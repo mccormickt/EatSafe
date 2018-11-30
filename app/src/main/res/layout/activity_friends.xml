@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="edu.gatech.cc.eatsafe.FriendsActivity">
+
+    <Button
+            android:id="@+id/addFriends_button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Edit Friends"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="36dp"
+            android:layout_marginBottom="50dp" android:layout_alignParentBottom="true"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignEnd="@+id/friends_title"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="125dp"
+        android:layout_marginEnd="-120dp"
+        android:layout_marginTop="90dp"
+        android:fillViewport="true">
+        <!--<LinearLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="fill"-->
+            <!--android:orientation="vertical"-->
+            <!--android:id="@+id/info_layout">-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:id="@+id/friends_body"/>
+        <!--</LinearLayout>-->
+    </ScrollView>
+    <TextView
+            android:id="@+id/friends_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:text="My Friends" android:layout_centerHorizontal="true"
+            android:textAppearance="@android:style/TextAppearance.Material" android:textSize="24sp"
+            android:fontFamily="sans-serif-smallcaps"/>
+    <ImageView
+            android:layout_width="126dp"
+            android:layout_height="89dp" app:srcCompat="@drawable/eatsafe" android:id="@+id/eatsafe"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:layout_alignStart="@+id/scrollView"/>
+
+</RelativeLayout>

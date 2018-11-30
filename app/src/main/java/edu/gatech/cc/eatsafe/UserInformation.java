@@ -2,6 +2,7 @@ package edu.gatech.cc.eatsafe;
 
 import com.google.firebase.database.Exclude;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,17 +12,19 @@ public class UserInformation {
     private String birthdate;
     private String email;
     private Map<String, Boolean> allergens;
+    private ArrayList<String> friends; // list of friends and their allergens
 
     // Default constructor for firebase
     public UserInformation(){}
 
     public UserInformation(String firstName, String lastName, String birthdate, String email,
-                           Map<String, Boolean> allergens) {
+                           Map<String, Boolean> allergens, ArrayList<String> friends) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.email = email;
         this.allergens = allergens;
+        this.friends = friends;
     }
 
     public void setFirstName(String newFirstName) {
@@ -44,6 +47,8 @@ public class UserInformation {
         this.allergens = newAllergens;
     }
 
+    public void setFriends(ArrayList<String> friends) { this.friends = friends;}
+
     public String getFirstName() {
         return firstName;
     }
@@ -64,6 +69,8 @@ public class UserInformation {
         return allergens;
     }
 
+    public ArrayList<String> getFriends() { return friends; }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -72,6 +79,7 @@ public class UserInformation {
         result.put("email", email);
         result.put("birthdate", birthdate);
         result.put("allergens", allergens);
+        result.put("friends", friends);
 
         return result;
     }
