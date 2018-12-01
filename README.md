@@ -27,7 +27,7 @@ Android phone with 8.1 (Oreo)
 
 ### Download Instructions
 
-Download the .apk file from the repository under /releases
+Download the .apk file from the repository under app/release/
 
 ### Installation
 
